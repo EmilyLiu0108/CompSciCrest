@@ -1,0 +1,24 @@
+from ecsda_utils import SigningKey, VerifyingKey,SECP256k1
+import hashlib
+
+def generate_keys():
+    sign_key = SigningKey.generate(curve=SECP256k1)
+    verify_key = sign_key.get_verifying_key()
+    return sign_key, verify_key
+
+def sign_data(data,private_key):
+    data_bytes = data_string.encode()
+    return private_key.sign(data_bytes).hex()
+
+
+def verify_signature(data, signature, public_key):
+    try:
+        signature_bytes = bytes.fromhex(signature)
+        return public_key.verify(signature_bytes, data.encode())
+    except:
+        return False 
+    
+
+
+
+
